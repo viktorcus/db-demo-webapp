@@ -36,4 +36,14 @@ async function getUsersByViews(minViews: number): Promise<User[]> {
   return users;
 }
 
-export { addUser, getUserByEmail, getUserById, getUsersByViews };
+async function updateEmailAddress(userId: string, newEmail: string): Promise<void> {
+  await userRepository
+    .createQueryBuilder()
+    .update(User)
+    .set({ email: newEmail })
+    .where({ userId })
+    .execute();
+}
+  
+
+export { addUser, getUserByEmail, getUserById, getUsersByViews, updateEmailAddress };

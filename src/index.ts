@@ -36,8 +36,8 @@ app.post('/api/login', logIn); // Log in to an account
 app.post('/api/users/profileViews/reset', resetProfileViews); // Log in to an account
 
 app.get('/api/users', getAllUserProfiles);
-app.get('/api/users/:userId', getUserProfileData);
-app.post('/api/users/:userId/email', updateUserEmail);
+app.get('/api/users/:targetUserId', getUserProfileData);
+app.post('/api/users/:targetUserId/email', updateUserEmail);
 
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`);

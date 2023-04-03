@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Relation } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Relation, ManyToMany } from 'typeorm';
 import { Review } from './Review';
+import { User } from './User';
 
 @Entity()
 export class Book {
@@ -17,4 +18,7 @@ export class Book {
 
   @OneToMany(() => Review, (review) => review.book, { cascade: ['insert', 'update'] })
   reviews: Relation<Review>[];
+
+  @ManyToMany(() => User, (user) => user.books, { cascade: ['insert', 'update'] })
+  users: Relation<User>[];
 }

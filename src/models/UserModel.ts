@@ -26,7 +26,11 @@ async function allUserData(): Promise<User[]> {
 }
 
 async function getUserById(userId: string): Promise<User | null> {
-  const user = await userRepository.findOne({ where: { userId } });
+  const user = await userRepository
+    .createQueryBuilder('user')
+    .leftJoinAndSelect('user.reviews', 'reviews')
+    .where('user.userId = :userId', { userId })
+    .getOne();
   return user;
 }
 
@@ -34,7 +38,7 @@ async function getUsersByViews(minViews: number): Promise<User[]> {
   const users = await userRepository
     .createQueryBuilder('user')
     .where('profileViews >= :minViews', { minViews }) // NOTES: the parameter `:minViews` must match the key name `minViews`
-    .select(['user.email', 'user.profileViews', 'user.joinedOn', 'user.userId'])
+    .select(['user.email', 'user.profileViews', 'user.userId'])
     .getMany();
 
   return users;

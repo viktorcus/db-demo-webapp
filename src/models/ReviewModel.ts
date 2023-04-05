@@ -9,7 +9,7 @@ async function addReview(
   rating: number,
   reviewText: string,
   forBook: Book,
-  byUser: User
+  byUser: User,
 ): Promise<Review> {
   // Create the new Review object
   let newReview = new Review();
@@ -56,7 +56,7 @@ async function userHasReviewForBook(userId: string, bookId: string): Promise<boo
 async function getReviewsByUserId(
   userId: string,
   minRating: number,
-  maxRating: number
+  maxRating: number,
 ): Promise<Review[]> {
   const reviews = await reviewRepository
     .createQueryBuilder('review')

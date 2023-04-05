@@ -36,7 +36,7 @@ app.use(
     name: 'session',
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 
 app.use(express.urlencoded({ extended: false }));

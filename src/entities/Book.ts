@@ -21,4 +21,7 @@ export class Book {
 
   @ManyToMany(() => User, (user) => user.books, { cascade: ['insert', 'update'] })
   users: Relation<User>[];
+
+  @ManyToMany(() => User, (author) => author.books, { cascade: ['insert', 'update'] })
+  authors: Relation<User>[];
 }

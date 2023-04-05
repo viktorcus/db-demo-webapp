@@ -3,15 +3,15 @@ import { Book } from './Book';
 
 @Entity()
 export class Author {
-    @PrimaryGeneratedColumn('uuid')
-    authorId: string;
+  @PrimaryGeneratedColumn('uuid')
+  authorId: string;
 
-    @Column()
-    name: string;
+  @Column()
+  name: string;
 
-    @Column({ default: 'unknown' })
-    country: string;
+  @Column({ default: 'unknown' })
+  country: string;
 
-    @ManyToMany(() => Book, (book) => book.authors)
-    books: Relation<Book>[];
+  @ManyToMany(() => Book, (book) => book.authors)
+  books: Relation<Book>[];
 }

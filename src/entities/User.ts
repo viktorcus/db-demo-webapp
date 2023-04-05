@@ -19,5 +19,5 @@ export class User {
   profileViews: number;
 
   @OneToMany(() => Review, (review) => review.user)
-  reviews: Relation<Review>[]; 
+  reviews: Relation<Review>[];
 }

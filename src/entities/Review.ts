@@ -1,6 +1,4 @@
-import { 
-    Entity, PrimaryGeneratedColumn, Column, 
-    Check, ManyToOne, Relation } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, Check, ManyToOne, Relation } from 'typeorm';
 import { Book } from './Book';
 import { User } from './User';
 

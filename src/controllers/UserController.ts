@@ -61,12 +61,11 @@ async function updateUserEmail(req: Request, res: Response): Promise<void> {
     await updateEmailAddress(userId, email);
     user.email = email;
     res.json(user);
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     const databaseErrorMessage = parseDatabaseError(err);
     res.status(500).json(databaseErrorMessage);
   }
 }
-  
 
 export { registerUser, logIn, updateUserEmail };

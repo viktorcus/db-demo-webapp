@@ -3,16 +3,3 @@ type DatabaseConstraintError = {
   columnName?: string;
   message?: string;
 };
-
-type AuthRequest = {
-  email: string;
-  password: string;
-};
-
-type NewEmailBody = {
-  email: string;
-}
-
-type UserIdParam = {
-  userId: string;
-}

@@ -1,5 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Relation } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  JoinTable,
+  ManyToMany,
+  Column,
+  OneToMany,
+  Relation,
+} from 'typeorm';
 import { Review } from './Review';
+import { Book } from './Book';
 
 @Entity()
 export class User {
@@ -18,6 +27,10 @@ export class User {
   @Column({ default: 0 })
   profileViews: number;
 
-  @OneToMany(() => Review, (review) => review.user)
+  @OneToMany(() => Review, (review) => review.user, { cascade: ['insert', 'update'] })
   reviews: Relation<Review>[];
+
+  @ManyToMany(() => Book, (book) => book.users, { cascade: ['insert', 'update'] })
+  @JoinTable()
+  books: Relation<Book>[];
 }
